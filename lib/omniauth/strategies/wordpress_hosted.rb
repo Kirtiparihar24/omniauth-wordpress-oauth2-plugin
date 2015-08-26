@@ -20,10 +20,10 @@ module OmniAuth
 
       info do
         {
-            name: raw_info['display_name'],
-            email: raw_info['user_email'],
-            nickname: raw_info['user_nicename'],
-            urls: { "Website" => raw_info['user_url'] }
+          name: raw_info['display_name'],
+          email: raw_info['user_email'],
+          nickname: raw_info['user_nicename'],
+          urls: { "Website" => raw_info['user_url'] }
         }
       end
 
@@ -33,7 +33,7 @@ module OmniAuth
 
       def raw_info
         puts access_token.token
-        @raw_info ||= access_token.get("/oauth/me", :params => { 'access_token' => access_token.token }).parsed
+        @raw_info ||= access_token.get("/oauth/me", :params => { 'Authorization' => "Bearer #{access_token.token}" }).parsed
       end
     end
   end
