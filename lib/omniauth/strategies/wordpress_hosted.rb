@@ -32,8 +32,12 @@ module OmniAuth
       end
 
       def raw_info
-        puts access_token.token
-        @raw_info ||= access_token.get("/oauth/me", :params => { 'Authorization' => "Bearer #{access_token.token}" }).parsed
+        @raw_info ||= access_token.get(
+          "/oauth/me",
+          :params => { 'Authorization' =>
+                       "Bearer #{access_token.token}"
+                       }
+        ).parsed
       end
     end
   end
